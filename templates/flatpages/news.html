@@ -38,13 +38,12 @@
     
             <td valign="top"><form action="{% url 'logout' %}" method="post" style="margin-left: 15px; margin-right: 15px">
                 {% csrf_token %}
-                <h4>Вы вошли как <br>
-                    <b>{{ request.user }}; pk={{request.user.pk}}<br></b></h4>
+                <h4>Пользователь с логином <b><i>{{ request.user }}<br></i></b></h4>
                 <input type="submit" value="Выйти">
             </form>                
-            {% if user_is_not_author %}
+            {% if is_not_author %}
                 <button type="button" style="margin-left: 15px; margin-top: 15px" ><a href="{% url 'add_to_authors' %}">Стать автором</a></button>
-                {% endif %}            
+            {% endif %}            
             </td>
         
         </tr></table>

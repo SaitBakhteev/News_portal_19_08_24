@@ -168,7 +168,7 @@ LOGIN_REDIRECT_URL='/'
 
 # добавки по авторизации
 ACCOUNT_EMAIL_REQUIRED=True
-# ACCOUNT_EMAIL_VERIFICATION='none'
+ACCOUNT_EMAIL_VERIFICATION='mandatory' # требуется верификация e-mail для первого входа в систему
 ACCOUNT_USERNAME_REQUIRED=True
 ACCOUNT_AUTHENTICATION_METHOD='username_email'
 ACCOUNT_UNIQUE_EMAIL=True

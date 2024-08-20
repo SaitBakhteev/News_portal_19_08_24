@@ -12,7 +12,7 @@
 
     {% block menu %}
     <!-- В родительском шаблоне код из "коробки", в котором границы блока
-    "menu" добавлены автором проекта -->
+    "menu" добавлены автором данного проекта -->
     {% endblock menu %}
 
     {% if not SOCIALACCOUNT_ONLY %}
@@ -22,10 +22,17 @@
             {% setvar end_link %}
             </a>
         {% endsetvar %}
-
         {% element p %}
-            {% blocktranslate %}If you have not created an account yet, then please {{ link }}sign up{{ end_link }} first.{% endblocktranslate %}
+             <!-- изменененный автором проекта фрагмент -->
+            If you have not created an account yet, then please
+                <a href="{% url 'signup' %}">sign up</a>first.
+
+{#        В оригинале "из коробки" измененный фрагмент выглядит так: #}
+{#              {% blocktranslate %}               #}
+{#                    If you have not created an account yet, then please {{ link }}sign up{{ end_link }} first.-->  #}
+{#            {% endblocktranslate %}     #}
         {% endelement %}
+
         {% url 'account_login' as login_url %}
         {% element form form=form method="post" action=login_url tags="entrance,login" %}
             {% slot body %}

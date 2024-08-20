@@ -5,24 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="309f2f09-8c12-4134-97b7-c23d249271fa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/allauth/layouts/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/allauth/layouts/entrance.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/allauth/layouts/manage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3_1.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3_1.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/djangoProject_News_Portal/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoProject_News_Portal/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news_portal/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/news_portal/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news_portal/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/news_portal/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/news_portal/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/news_portal/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protect/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/protect/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sign/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/sign/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sign/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/sign/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sign/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sign/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/403.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/403.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/flatpages/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/flatpages/edit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/flatpages/news.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/flatpages/news.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/flatpages/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/flatpages/post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/flatpages/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/flatpages/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sign/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/protect/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/protect/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sign/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sign/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sign/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sign/signup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,38 +53,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.django_News_project_D7.executor": "Run",
-    "Python.TEST.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "django.template.preview.state": "SHOW_EDITOR",
-    "last_opened_file_path": "D:/Pyth_learn/Projects/django_News_project_D7/templates/allauth",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "aDefault",
-    "settings.editor.selected.configurable": "editor.preferences.tabs",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django Server.django_News_project_D7.executor&quot;: &quot;Run&quot;,
+    &quot;Python.TEST.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Pyth_learn/Projects/django_News_project_D7/templates/allauth&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Pyth_learn\Projects\django_News_project_D7\templates\allauth" />
       <recent name="D:\Pyth_learn\Projects\django_News_project_D7\templates\flatpages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Pyth_learn\Projects\django_News_project_D7\templates\protect" />
       <recent name="D:\Pyth_learn\Projects\django_News_project_D7\templates\account" />
       <recent name="D:\Pyth_learn\Projects\django_News_project_D7\templates" />
       <recent name="D:\Pyth_learn\Projects\django_News_project_D7\templates\flatpages\sign" />
       <recent name="D:\Pyth_learn\Projects\django_News_project_D7\templates\flatpages\protect" />
-      <recent name="D:\Pyth_learn\Projects\django_News_project_D7\protect" />
     </key>
   </component>
   <component name="RunManager" selected="Python.TEST">
@@ -277,7 +272,9 @@
       <workItem from="1723924577670" duration="3557000" />
       <workItem from="1723928650778" duration="508000" />
       <workItem from="1723929282028" duration="1871000" />
-      <workItem from="1723971598923" duration="26515000" />
+      <workItem from="1723971598923" duration="27036000" />
+      <workItem from="1724046023845" duration="16225000" />
+      <workItem from="1724131041624" duration="6858000" />
     </task>
     <servers />
   </component>

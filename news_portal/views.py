@@ -43,9 +43,9 @@ class PostsList(LoginRequiredMixin, ListView): #класс для показа �
     def get_context_data(self,**kwargs):
         context=super().get_context_data(**kwargs)
         context['form'] = self.form
+        context['is_not_author']= not self.request.user.groups.filter(name='authors').exists()
 
-        context['user_is_not_author'] = 'Not_author' if not self.request.user.groups.filter(name='authors').exists() else None
-        if self.request.path=='/news/edit_subscribe/':
+        if self.request.path==reverse('edit_subscribe'):
             self.edit_subscribe=True
             context['edit_subscribe'] = self.edit_subscribe
         return context
@@ -91,7 +91,7 @@ class PostsList(LoginRequiredMixin, ListView): #класс для показа �
                     UserSubcribes.objects.create(subcribe=user, category=i_category)
                 return redirect('main_page')
 
-class PostDetail(DetailView): # детальная информация конкретного поста
+class PostDetail(LoginRequiredMixin,DetailView): # детальная информация конкретного поста
     model = Post
     template_name = 'flatpages/post.html'
     context_object_name = 'post'
@@ -135,6 +135,7 @@ class PostFilterView(LoginRequiredMixin, ListView): # класс для отоб
         context['filter']=self.filter
         return context
 
+@login_required
 @permission_required('news_portal.add_post', raise_exception=True)
 def create_post(request): # функция для создания и добавления новой публикации
     form=PostForm()
@@ -168,47 +169,47 @@ def create_post(request): # функция для создания и добав
             return render(request, 'flatpages/messages.html', {'state':'Новая публикация добавлена успешно!','list':recepient_list})
     return render(request, 'flatpages/edit.html', {'form':form, 'button':'Опубликовать', 'is_author':is_author})
 
+@login_required
 @permission_required('news_portal.change_post', raise_exception=True)
 def edit_post(request, pk): # функция для редактирования названия и содержания поста
-    try:
-        post = Post.objects.get(pk=pk)
+    post = Post.objects.get(pk=pk)
 
-        # обладает ли пользователь правами автора публикаций
-        is_author= request.user.groups.filter(name='authors').exists()
+    # обладает ли пользователь правами автора публикаций
+    is_author= request.user.groups.filter(name='authors').exists()
 
-        form=PostForm(initial={'create_time':post.create_time,
-                               'author':post.author,
-                               'postType':post.postType,
-                               'title': post.title,
-                               'content': post.content,
-                               'category': Category.objects.filter(postcategory__post=post)
-                               })
-        form.fields['postType'].disabled = True
-        form.fields['author'].disabled = True
-        form.fields['category'].queryset = Category.objects.all()
-        form.fields['category'].disabled = True
+    form=PostForm(initial={'create_time':post.create_time,
+                           'author':post.author,
+                           'postType':post.postType,
+                           'title': post.title,
+                           'content': post.content,
+                           'category': Category.objects.filter(postcategory__post=post)
+                           })
+    form.fields['postType'].disabled = True
+    form.fields['author'].disabled = True
+    form.fields['category'].queryset = Category.objects.all()
+    form.fields['category'].disabled = True
+    form.fields['category'].required = False
+
+    if request.method=='POST':
+        form=PostForm(request.POST, post)
+        form.fields['postType'].required = False
+        form.fields['author'].required = False
+        form.fields['create_time'].required = False
         form.fields['category'].required = False
-
-        if request.method=='POST':
-            form=PostForm(request.POST, post)
-            form.fields['postType'].required = False
-            form.fields['author'].required = False
-            form.fields['create_time'].required = False
-            form.fields['category'].required = False
-            try:
-                state = None  # переменная для контекста отображающая сообщение для пользователя о результатах действий
-                if form.is_valid():
-                    Post.objects.filter(pk=pk).update(**{'author':post.author,
-                                                         'postType':post.postType,
-                                                         'create_time':post.create_time,
-                                                         'title':form.cleaned_data['title'],
-                                                         'content':form.cleaned_data['content']})
-                    state='Изменения успешно сохранены.'
-            except TypeError:
-                state = 'Возникла ошибка! Возможно причина в превышении лимита названия поста, попавшего в БД не через форму'
-            return render(request, 'flatpages/messages.html', {'state':state})
-    except Exception as e:
-        return render(request, 'flatpages/messages.html', {'error':e})
+        try:
+            state = None  # переменная для контекста отображающая сообщение для пользователя о результатах действий
+            if form.is_valid():
+                Post.objects.filter(pk=pk).update(**{'author':post.author,
+                                                     'postType':post.postType,
+                                                     'create_time':post.create_time,
+                                                     'title':form.cleaned_data['title'],
+                                                     'content':form.cleaned_data['content']})
+                state='Изменения успешно сохранены.'
+        except TypeError:
+            state = 'Возникла ошибка! Возможно причина в превышении лимита названия поста, попавшего в БД не через форму'
+        return render(request, 'flatpages/messages.html', {'state':state})
+    if not request.user.has_perm('news_portal.change_post'):
+        raise PermissionError('Errrs')
     return render(request, 'flatpages/edit.html', {'form':form, 'button':'Сохранить изменения', 'is_author':is_author})
 
 @permission_required('news_portal.delete_post', raise_exception=True)

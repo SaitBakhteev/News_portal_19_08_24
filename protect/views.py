@@ -1,12 +1,13 @@
-from django.shortcuts import render, redirect
-
-from django.views.generic import TemplateView
+from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView
 
-class IndexView(TemplateView, LoginRequiredMixin):
-    def get(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            return redirect('main_page') # авторизованный пользователь попадает на главную страницу новостного портала
-        return redirect('account_login') # неавторизованный пользователь попадает на страницу авторизации
+class IndexView(LoginRequiredMixin, TemplateView):
+    template_name = 'protect/index.html'
+
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context['is_author']=self.request.user.groups.filter(name='authors').exists()
+        return context
 
 # Create your views here.

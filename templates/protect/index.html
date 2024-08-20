@@ -6,8 +6,17 @@
 </head>
 <body>
 {% if request.user.is_authenticated %}
-    <h4 style="margin-left: 15px">Вы авторизованы как {{ request.user.username }}<br>
-    <a href="{% url 'main_page' %}" >На главную страницу</a></h4>
+    <h3 style="margin-left: 15px; margin-bottom: 20px">Вы авторизованы в системе. Ваши данные:<br>
+        - <i>логин</i>: {{ request.user.username }};<br>
+        - <i>e-mail</i>: {{ request.user.email }};<br>
+        - <i>права автора</i>:
+            {% if is_author %}
+                есть;<br>
+                {% else %}
+                отсутствуют;<br>
+                {% endif %}
+                </h3>
+    <a href="{% url 'main_page' %}" style="margin-left: 15px; font-size: larger">Перейти на главную страницу</a>
         <form action="{% url 'logout' %}" method="post" style="margin-left: 15px">
             {% csrf_token %}
             <input type="submit" value="Выйти">
@@ -16,6 +25,5 @@
             <h3 style="margin-left: 15px">Вы не авторизованы в системе.<br>
                 Пройти авторизацию необходимо <a href="{% url 'account_login' %}">здесь</a></h3>
 {% endif %}
-
 </body>
 </html>
